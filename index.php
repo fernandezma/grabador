@@ -1,52 +1,56 @@
 <HTML>
 <HEAD>
-<TITLE>ADADSD</TITLE>
+<TITLE><?php echo $titulo ?></TITLE>
 <link rel="stylesheet" type="text/css" href="/grabadorv3/style.css" media="screen" />
 </HEAD>
 <BODY>
 <?php
-// Ingreso de datos PREFIJO IN
+
+// Entradas de datos
 $regla = $_GET["regla"];
+
+// Configuracion General
+#Default $base = "/"
+$base = "/grabadorv3/rec/"; 
+$titulo = "Grabador" ;
+
+// Checkeos de Entradas:
 if (empty($_GET["ano"]))
 {
+	echo "por aca " ;
 	$anopro = date('Y');
-}
+}else {
 $anopro = $_GET['ano'];
+}
 
 if (empty($_GET["mes"]))
 { 
-	$mespro = date ('m');
-}
+	$mespro = date('m');
+}else {
 $mespro = $_GET['mes'];
+}
 
 if (empty($_GET["dia"]))
 {
-	$diapro = date ('j');
-}
+	$diapro = date('j');
+}else {
 $diapro = $_GET["dia"];
+}
 
 if (empty($_GET["hora"]))
 {
 	$horapro = date('H');
-}
+} else { 
 $horapro = $_GET["hora"];
-
+}
 //Datos Actuales
 $anoac = date('Y');
 $mesac = date ('m');
 $diaac = date ('j');
 $horaac = date('H');
 $minutos = date('m');
-//Datos Produccion
-if (empty($anoin))
-{ 
-	$anopro = date('Y');
-}
 
 
-echo "$anopro - $mespro - $diapro - $horapro - $minutopro";
-
-$titulo = "Grabador" ;
 switch ($regla) { 
 	case 1:
 		$titulo = "Descarga" ;
@@ -80,7 +84,7 @@ if ( $mode1 == 'generated' && $generated == 'pass' )
 	</div>
 	<div id="anobar">
 		<div class="izquierda">IZQ</div>
-		<div id="ano"> 2010 </div>
+		<div id="ano"><?php echo $anopro ?> </div>
 		<div class="derecha">DER</div>
 	</div>
 	<div id="mesbar">
@@ -103,7 +107,7 @@ if ( $mode1 == 'generated' && $generated == 'pass' )
 		<?php
 		for ($i = 1; $i <= 31; $i++) {
 			$urldiadia = str_pad((int) $i,2,"0",STR_PAD_LEFT);
-			$urldia = "/$anopro/$mespro/$urldiadia/";
+			$urldia = "$base$anopro/$mespro/$urldiadia";
 			echo "<li><a href=$urldia>$urldiadia</a></li>";
 		}
 		?>
