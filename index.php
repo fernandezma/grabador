@@ -1,19 +1,55 @@
 <HTML>
 <HEAD>
 <TITLE>ADADSD</TITLE>
-<link rel="stylesheet" type="text/css" href="style.css" media="screen" />
+<link rel="stylesheet" type="text/css" href="/grabadorv3/style.css" media="screen" />
 </HEAD>
 <BODY>
 <?php
-$ano = $_GET['ano'];
-$mes = $_GET['mes'];
-$dia = $_GET['dia'];
-$hora = $_GET['hora'];
-$regla = $_GET['regla'];
+// Ingreso de datos PREFIJO IN
+$regla = $_GET["regla"];
+if (empty($_GET["ano"]))
+{
+	$anopro = date('Y');
+}
+$anopro = $_GET['ano'];
 
+if (empty($_GET["mes"]))
+{ 
+	$mespro = date ('m');
+}
+$mespro = $_GET['mes'];
+
+if (empty($_GET["dia"]))
+{
+	$diapro = date ('j');
+}
+$diapro = $_GET["dia"];
+
+if (empty($_GET["hora"]))
+{
+	$horapro = date('H');
+}
+$horapro = $_GET["hora"];
+
+//Datos Actuales
+$anoac = date('Y');
+$mesac = date ('m');
+$diaac = date ('j');
+$horaac = date('H');
+$minutos = date('m');
+//Datos Produccion
+if (empty($anoin))
+{ 
+	$anopro = date('Y');
+}
+
+
+echo "$anopro - $mespro - $diapro - $horapro - $minutopro";
+
+$titulo = "Grabador" ;
 switch ($regla) { 
-	case 1: 
-		echo "esta activada la opcion 1"; 
+	case 1:
+		$titulo = "Descarga" ;
 	break; 
 	case 2: 
 		echo "esta activada la opcion 2"; 
@@ -21,7 +57,8 @@ switch ($regla) {
 	case 3: 
 		echo "esta activada la opcion 3";
 	break; 
-	case 4: 
+	case 4:
+		$titulo = "NO ENCONTRADO"; 
 		echo "ERROR: El contenido no esta disponible";
 	break; 
 } 
@@ -35,7 +72,7 @@ if ( $mode1 == 'generated' && $generated == 'pass' )
 <div id="home">
 	<div id="header">
                 <div id="titulo">
-		TITULO
+		<h1><?php echo $titulo ?><h1>
                 </div>
 		<div id="tiempo">
 		TIEMPO
@@ -63,37 +100,13 @@ if ( $mode1 == 'generated' && $generated == 'pass' )
 	<div id="dia">
 		<div id="fixdia">DIA:</div>
 		<ul>
-			<li><a href="01">01</a></li>
-			<li><a href="01">02</a></li>
-                        <li><a href="01">03</a></li>
-                        <li><a href="01">04</a></li>
-                        <li><a href="01">05</a></li>
-                        <li><a href="01">06</a></li>
-                        <li><a href="01">07</a></li>
-                        <li><a href="01">08</a></li>
-                        <li><a href="01">09</a></li>
-                        <li><a href="01">10</a></li>
-                        <li><a href="01">11</a></li>
-                        <li><a href="01">12</a></li>
-                        <li><a href="01">13</a></li>
-                        <li><a href="01">14</a></li>
-                        <li><a href="01">15</a></li>
-                        <li><a href="01">16</a></li>
-                        <li><a href="01">17</a></li>
-                        <li><a href="01">18</a></li>
-                        <li><a href="01">19</a></li>
-                        <li><a href="01">20</a></li>
-                        <li><a href="01">21</a></li>
-                        <li><a href="01">22</a></li>
-                        <li><a href="01">23</a></li>
-                        <li><a href="01">24</a></li>
-                        <li><a href="01">25</a></li>
-                        <li><a href="01">26</a></li>
-                        <li><a href="01">27</a></li>
-                        <li><a href="01">26</a></li>
-                        <li><a href="01">29</a></li>
-                        <li><a href="01">30</a></li>
-                        <li id="fixli"><a href="01">31</a></li>
+		<?php
+		for ($i = 1; $i <= 31; $i++) {
+			$urldiadia = str_pad((int) $i,2,"0",STR_PAD_LEFT);
+			$urldia = "/$anopro/$mespro/$urldiadia/";
+			echo "<li><a href=$urldia>$urldiadia</a></li>";
+		}
+		?>
 		</ul>
 			
 		
