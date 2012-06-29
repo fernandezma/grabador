@@ -153,7 +153,7 @@ if ( $mode1 == 'generated' && $generated == 'pass' )
 	ULTIMO
 	</div>
 	<div id="corte">
-	<span id="minutoss"><?php echo 60-$minutosac?></span> : <span id="segundos"><?php echo 60-$segundosac ?></span> 
+	<span id="minutoss"><?php echo 59-$minutosac?></span> : <span id="segundos"><?php echo 59-$segundosac ?></span> 
 	</div>
 </div>
 
