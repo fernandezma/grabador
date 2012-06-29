@@ -1,0 +1,119 @@
+#home { 
+	width:850px;
+	margin:0 auto;
+	background:#fff;
+}
+
+.izquierda  {
+	width: 30px;
+	height: 30px;
+	background-color:#4B8DF9;
+	float:left;
+	margin-right:5px;
+}
+
+.derecha { 
+        width: 30px;
+        height: 30px;
+	background-color:#4B8DF9;
+	float:left;
+	margin-left:5px;
+	
+} 
+
+
+#header { 
+	width:850px;
+	margin-bottom:5px;
+	display:table;
+}
+#titulo { 
+	width:595px;
+	height:100px;
+	background:#4b8df9;
+	float:left;
+	margin-right:5px;
+}
+#tiempo { 
+	width:250px;
+	background:#4b8df9;
+	float:left;
+} 
+
+
+
+#anobar { 
+	width:140px;
+
+}
+
+#ano {
+	width:70px;
+	height: 30px;
+	background-color:#4B8DF9;
+	float:left;
+	text-align:center;
+}
+
+
+#mesbar { 
+        width:696px;
+	float:right;
+	margin-bottom:5px;	
+	
+}
+#mes {
+	width:53px;
+	height: 30px;
+	background-color:#4B8DF9;
+	float:right;
+	text-align:center;	
+	margin-right:4px;
+}
+
+#dia { 
+	clear:both;
+	
+}
+#fixdia { 
+	width:70px;
+	height: 21px;
+	background-color:#4B8DF9;
+	float:left;
+	margin-right:4px;
+	
+}
+
+#dia ul { 
+	list-style-type: none;
+	margin:0px;
+	padding:0px;
+}
+
+#dia li {
+	width:21px;
+	height: 21px;
+	background-color:#4B8DF9;
+	float:left;
+	margin-right:4px;
+	text-align:center;
+}
+#fixli { 
+	margin-right:0px;
+}
+
+#hora { 
+	clear:both;
+}
+
+
+#pie { 
+	width:850px;
+	background-color:#4B8DF9;
+	position: absolute; 
+	bottom: 0px;
+        left:0;
+        right:0;
+        margin-left:auto;
+        margin-right:auto;
+}
