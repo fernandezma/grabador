@@ -2,6 +2,34 @@
 <HEAD>
 <TITLE><?php echo $titulo ?></TITLE>
 <link rel="stylesheet" type="text/css" href="/grabadorv3/style.css" media="screen" />
+<script type="text/javascript">
+//<![CDATA[
+// 1000 = 1 segundo
+var mins = 59;
+var segs = 59;
+var s;
+function minutos(){
+document.getElementById("minutos").innerHTML=mins;
+if(mins == 0){
+var dm = clearInterval(m);
+s = setInterval('segundos()', 1000);
+}
+mins--;
+}
+ 
+function segundos(){
+document.getElementById("segundos").innerHTML=segs;
+if(segs == 0){
+location.reload();
+var ds = clearInterval(s);
+}
+segs--;
+}
+ 
+var m = setInterval('minutos()', 60000);
+var s = setInterval('segundos()', 1000); 
+//]]>
+</script>
 </HEAD>
 <BODY>
 <?php
@@ -43,13 +71,14 @@ if (empty($_GET["hora"]))
 } else { 
 $horapro = $_GET["hora"];
 }
+
 //Datos Actuales
 $anoac = date('Y');
 $mesac = date ('m');
 $diaac = date ('j');
 $horaac = date('H');
-$minutos = date('m');
-
+$minutosac = date('i');
+$segundosac = date('s');
 
 switch ($regla) { 
 	case 1:
@@ -124,7 +153,7 @@ if ( $mode1 == 'generated' && $generated == 'pass' )
 	ULTIMO
 	</div>
 	<div id="corte">
-	CORTE
+	<span id="minutoss"><?php echo 60-$minutosac?></span> : <span id="segundos"><?php echo 60-$segundosac ?></span> 
 	</div>
 </div>
 
