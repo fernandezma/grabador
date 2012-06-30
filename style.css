@@ -1,5 +1,6 @@
 body {
 	font-family: 'Quicksand', sans-serif;
+	height: 100%;
 }
 a {
 	text-decoration:none
@@ -34,7 +35,9 @@ a {
 	width:850px;
 	margin:0 auto;
 	background:#fff;
-}
+	overflow:auto;
+	min-height: 100%;
+	}
 
 .izquierda  {
 	font-family: 'Concert One', cursive;
@@ -94,7 +97,7 @@ a {
 #ano {
 	width:70px;
 	height: 30px;
-	background-color:#333333;
+	background-color:#F7F7F7;
 	float:left;
 	text-align:center;
 }
@@ -129,13 +132,13 @@ a {
 #dia { 
 	clear:both;
 	text-align:center;
-	color:#fff;
+	color:#333333;
 	
 }
 #fixdia { 
 	width:70px;
 	height: 21px;
-	background-color:#333333;
+	background-color:#F7F7F7;
 	float:left;
 	margin-right:4px;
 	
@@ -166,6 +169,7 @@ a {
 
 #hora { 
 	clear:both;
+	display:inline-block;
 }
 
 
@@ -173,19 +177,18 @@ a {
         height: 75px;
 	width:850px;
 	background-color:#f5f5f5;
-	position: absolute; 
-	bottom: 0px;
         left:0;
         right:0;
         margin-left:auto;
         margin-right:auto;
 	border-top: 1px solid #878787;
+	position: relative;
 }
 
 #fix5 { 
 	margin-top:5px;
 	display:inline-block;
-	color:#fff;
+	color:#333333;
 }
 .actual a  {
         color:#fff;

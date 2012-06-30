@@ -148,9 +148,25 @@ if ( $mode1 == 'generated' && $generated == 'pass' )
 		
 	</div>
 	<div id="hora">
-	hora
+                <?php
+                for ($i = 1; $i <= 24; $i++) {
+                        $urlhorahora = str_pad((int) $i,2,"0",STR_PAD_LEFT);
+                        $urlhora = "$base$anopro/$mespro/$urlhorahora";
+                        if ($horaac == $urlhorahora )
+                        {
+                                $horaclass= 'class="actual"';
+                        } elseif ($horapro == $urlhorahora) {
+                                $horaclass= 'class="activo"';
+                        } else {
+                                $horaclass= 'class=inactivo';
+                        }
+
+                        echo "<li $horaclass ><a href=$urlhora>$urlhorahora</a></li>";
+                }
+                ?>
+
+
 	</div>
-</div>
 <div id="pie">
         <div id="corte">
         	<div id="cortehora"><span id="proximo"></span></div>
@@ -160,7 +176,7 @@ if ( $mode1 == 'generated' && $generated == 'pass' )
 	</div>
 </div>
 
-
+</div>
 
 
 </BODY>
