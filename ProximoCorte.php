@@ -1,6 +1,6 @@
 <?php
-$segundos = 59-date('s');
-$minutos = 59-date('i');
+$segundos = 60-date('s');
+$minutos = 60-date('i');
 echo "$minutos:$segundos" ;
 ?>
 

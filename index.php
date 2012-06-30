@@ -1,34 +1,19 @@
+<?php $segundosac = date('i'); ?>
 <HTML>
 <HEAD>
 <TITLE><?php echo $titulo ?></TITLE>
 <link rel="stylesheet" type="text/css" href="/grabadorv3/style.css" media="screen" />
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
+<link href='http://fonts.googleapis.com/css?family=Quicksand' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Concert+One' rel='stylesheet' type='text/css'>
 <script type="text/javascript">
-//<![CDATA[
-// 1000 = 1 segundo
-var mins = 59;
-var segs = 59;
-var s;
-function minutos(){
-document.getElementById("minutos").innerHTML=mins;
-if(mins == 0){
-var dm = clearInterval(m);
-s = setInterval('segundos()', 1000);
-}
-mins--;
-}
- 
-function segundos(){
-document.getElementById("segundos").innerHTML=segs;
-if(segs == 0){
-location.reload();
-var ds = clearInterval(s);
-}
-segs--;
-}
- 
-var m = setInterval('minutos()', 60000);
-var s = setInterval('segundos()', 1000); 
-//]]>
+$(function() {
+  setInterval(function() {
+    $.get('/grabadorv3/ProximoCorte.php', function(data) {
+      $('#proximo').html(data);
+    });
+  }, 5 * 1000);
+});
 </script>
 </HEAD>
 <BODY>
@@ -112,23 +97,22 @@ if ( $mode1 == 'generated' && $generated == 'pass' )
 		</div>
 	</div>
 	<div id="anobar">
-		<div class="izquierda">IZQ</div>
+		<div class="izquierda"><a href="<?php $anoiz= $anopro-1 ; echo "$base$anoiz/$mespro/$diapro" ;  ?>" > &lt; </a></div>
 		<div id="ano"><?php echo $anopro ?> </div>
-		<div class="derecha">DER</div>
+		<div class="derecha"><a href="<?php $anoiz= $anopro+1 ; echo "$base$anoiz/$mespro/$diapro" ;  ?>" > &gt; </a></div>
 	</div>
 	<div id="mesbar">
-		<div id="mes"> ENE </div>
-		<div id="mes"> FEB </div>
-                <div id="mes"> MAR </div>
-		<div id="mes"> ABR </div>
-		<div id="mes"> MAY </div>
-		<div id="mes"> JUN </div>
-		<div id="mes"> JUL </div>
-		<div id="mes"> AGO </div>
-		<div id="mes"> SEP </div>
-		<div id="mes"> OCT </div>
-		<div id="mes"> NOV </div>
-		<div id="mes"> DIC </div>
+                <ul>
+                <?php
+		$meses = array(ENE, FEB, MAR, ABR, MAY, JUN, JUL, AGO, SEP, OCT, NOV, DIC) ;
+                for ($i = 0; $i <= 11; $i++) {
+                        $urlmesmes = str_pad((int) $i+1,2,"0",STR_PAD_LEFT);
+                        $urlmes = "$base$anopro/$urlmesmes/$diapro";
+                        echo "<li><a href=$urlmes> $meses[$i] </a></li>";
+                }
+                ?>
+                </ul>
+
         </div>
 	<div id="dia">
 		<div id="fixdia">DIA:</div>
@@ -149,11 +133,10 @@ if ( $mode1 == 'generated' && $generated == 'pass' )
 	</div>
 </div>
 <div id="pie">
+        <div id="corte">
+        	<div><span id="proximo"></span>
+        </div>
 	<div id="ultimo">
-	ULTIMO
-	</div>
-	<div id="corte">
-	<span id="minutoss"><?php echo 59-$minutosac?></span> : <span id="segundos"><?php echo 59-$segundosac ?></span> 
 	</div>
 </div>
 

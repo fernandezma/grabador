@@ -1,3 +1,28 @@
+body {
+	font-family: 'Quicksand', sans-serif;
+}
+a {
+	text-decoration:none
+} 
+#proximo { 
+	color:#ccc;
+	font-family: 'Nunito', sans-serif;
+	font-weight: 400;
+	font-size:2.5em;
+}
+
+#pie { 
+	height: 50px;
+}
+#ultimo {
+	float:left;
+}
+
+#corte { 
+	float:left;
+}
+
+
 #home { 
 	width:850px;
 	margin:0 auto;
@@ -5,19 +30,27 @@
 }
 
 .izquierda  {
+	font-family: 'Concert One', cursive;
+	font-size:1.5em;
+	text-align:center;
 	width: 30px;
 	height: 30px;
 	background-color:#4B8DF9;
 	float:left;
 	margin-right:5px;
+	color:#fff;
 }
 
-.derecha { 
+.derecha {
+	font-family: 'Concert One', cursive;
+	font-size:1.5em;
+	text-align:center;
         width: 30px;
         height: 30px;
 	background-color:#4B8DF9;
 	float:left;
 	margin-left:5px;
+	color:#fff;
 	
 } 
 
@@ -63,7 +96,7 @@
 	margin-bottom:5px;	
 	
 }
-#mes {
+#mesbar li {
 	width:53px;
 	height: 30px;
 	background-color:#4B8DF9;
@@ -71,9 +104,21 @@
 	text-align:center;	
 	margin-right:4px;
 }
+#mesbar ul {
+        list-style-type: none;
+        margin:0px;
+        padding:0px;
+}
+#mesbar li a {
+	color:#fff;
+	display:inline-block;
+}
+
 
 #dia { 
 	clear:both;
+	text-align:center;
+	color:#fff;
 	
 }
 #fixdia { 
@@ -98,7 +143,14 @@
 	float:left;
 	margin-right:4px;
 	text-align:center;
+	font-size:0.9em;
 }
+#dia li a {
+	display:inline-block;
+	margin-top:2px;
+	color:#fff;
+}
+
 #fixli { 
 	margin-right:0px;
 }
