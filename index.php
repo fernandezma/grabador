@@ -89,7 +89,7 @@ if ( $mode1 == 'generated' && $generated == 'pass' )
 
 <div id="home">
 	<div id="header">
-                <div id="titulo">
+                <div class="inactivo" id="titulo">
 		<h1><?php echo $titulo ?><h1>
                 </div>
 		<div id="tiempo">
@@ -97,9 +97,9 @@ if ( $mode1 == 'generated' && $generated == 'pass' )
 		</div>
 	</div>
 	<div id="anobar">
-		<div class="izquierda"><a href="<?php $anoiz= $anopro-1 ; echo "$base$anoiz/$mespro/$diapro" ;  ?>" > &lt; </a></div>
+		<div class="izquierda inactivo"><a href="<?php $anoiz= $anopro-1 ; echo "$base$anoiz/$mespro/$diapro" ;  ?>" > &lt; </a></div>
 		<div id="ano"><span id="fix5" ><?php echo $anopro ?> </span> </div>
-		<div class="derecha"><a href="<?php $anoiz= $anopro+1 ; echo "$base$anoiz/$mespro/$diapro" ;  ?>" > &gt; </a></div>
+		<div class="derecha inactivo"><a href="<?php $anoiz= $anopro+1 ; echo "$base$anoiz/$mespro/$diapro" ;  ?>" > &gt; </a></div>
 	</div>
 	<div id="mesbar">
                 <ul>
@@ -153,7 +153,8 @@ if ( $mode1 == 'generated' && $generated == 'pass' )
 </div>
 <div id="pie">
         <div id="corte">
-        	<div><span id="proximo"></span>
+        	<div id="cortehora"><span id="proximo"></span></div>
+		<div id="cortetitulo">PROXIMO CORTE<div>
         </div>
 	<div id="ultimo">
 	</div>
