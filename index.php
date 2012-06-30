@@ -98,7 +98,7 @@ if ( $mode1 == 'generated' && $generated == 'pass' )
 	</div>
 	<div id="anobar">
 		<div class="izquierda"><a href="<?php $anoiz= $anopro-1 ; echo "$base$anoiz/$mespro/$diapro" ;  ?>" > &lt; </a></div>
-		<div id="ano"><?php echo $anopro ?> </div>
+		<div id="ano"><span id="fix5" ><?php echo $anopro ?> </span> </div>
 		<div class="derecha"><a href="<?php $anoiz= $anopro+1 ; echo "$base$anoiz/$mespro/$diapro" ;  ?>" > &gt; </a></div>
 	</div>
 	<div id="mesbar">
@@ -108,7 +108,17 @@ if ( $mode1 == 'generated' && $generated == 'pass' )
                 for ($i = 0; $i <= 11; $i++) {
                         $urlmesmes = str_pad((int) $i+1,2,"0",STR_PAD_LEFT);
                         $urlmes = "$base$anopro/$urlmesmes/$diapro";
-                        echo "<li><a href=$urlmes> $meses[$i] </a></li>";
+
+			if ($mesac == $urlmesmes )
+                        {
+                                $mesclass= 'class="actual"';
+                        } elseif ($mespro == $urlmesmes) {
+				$mesclass= 'class="activo"';
+			} else {
+                                $mesclass= 'class=inactivo';
+                        }
+
+                        echo "<li $mesclass ><a href=$urlmes> $meses[$i] </a></li>";
                 }
                 ?>
                 </ul>
@@ -121,7 +131,16 @@ if ( $mode1 == 'generated' && $generated == 'pass' )
 		for ($i = 1; $i <= 31; $i++) {
 			$urldiadia = str_pad((int) $i,2,"0",STR_PAD_LEFT);
 			$urldia = "$base$anopro/$mespro/$urldiadia";
-			echo "<li><a href=$urldia>$urldiadia</a></li>";
+                        if ($diaac == $urldiadia )
+                        {
+                                $diaclass= 'class="actual"';
+                        } elseif ($diapro == $urldiadia) {
+                                $diaclass= 'class="activo"';
+                        } else {
+                                $diaclass= 'class=inactivo';
+                        }
+
+			echo "<li $diaclass ><a href=$urldia>$urldiadia</a></li>";
 		}
 		?>
 		</ul>
