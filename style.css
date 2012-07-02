@@ -83,7 +83,6 @@ a {
 }
 #tiempo { 
 	width:250px;
-	background:#4b8df9;
 	float:left;
 } 
 
@@ -104,7 +103,6 @@ a {
 
 
 #mesbar { 
-        width:696px;
 	float:right;
 	margin-bottom:5px;	
 	
@@ -112,7 +110,7 @@ a {
 #mesbar li {
 	width:53px;
 	height: 30px;
-	float:right;
+	float:left;
 	text-align:center;	
 	margin-right:4px;
 }
@@ -170,6 +168,14 @@ a {
 #hora { 
 	clear:both;
 	display:inline-block;
+	margin-top:5px;
+}
+#hora li {
+	list-style-type:none;
+	width:70px;
+	margin-bottom:5px;
+	text-align;center;
+	
 }
 
 

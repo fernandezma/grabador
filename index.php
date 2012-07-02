@@ -93,7 +93,11 @@ if ( $mode1 == 'generated' && $generated == 'pass' )
 		<h1><?php echo $titulo ?><h1>
                 </div>
 		<div id="tiempo">
-		TIEMPO
+			<div id="corte">
+		                <div id="cortehora"><span id="proximo"></span></div>
+	        	        <div id="cortetitulo">PROXIMO CORTE</div>
+		        </div>
+
 		</div>
 	</div>
 	<div id="anobar">
@@ -149,9 +153,9 @@ if ( $mode1 == 'generated' && $generated == 'pass' )
 	</div>
 	<div id="hora">
                 <?php
-                for ($i = 1; $i <= 24; $i++) {
+                for ($i = 1; $i <= 72; $i++) {
                         $urlhorahora = str_pad((int) $i,2,"0",STR_PAD_LEFT);
-                        $urlhora = "$base$anopro/$mespro/$urlhorahora";
+                        $urlhora = "$base$anopro/$mespro/$diapro/$urlhorahora";
                         if ($horaac == $urlhorahora )
                         {
                                 $horaclass= 'class="actual"';
@@ -161,17 +165,13 @@ if ( $mode1 == 'generated' && $generated == 'pass' )
                                 $horaclass= 'class=inactivo';
                         }
 
-                        echo "<li $horaclass ><a href=$urlhora>$urlhorahora</a></li>";
+                        echo "<li $horaclass ><a href=$urlhora>$urlhorahora Hs.</a></li>";
                 }
                 ?>
 
 
 	</div>
 <div id="pie">
-        <div id="corte">
-        	<div id="cortehora"><span id="proximo"></span></div>
-		<div id="cortetitulo">PROXIMO CORTE<div>
-        </div>
 	<div id="ultimo">
 	</div>
 </div>
