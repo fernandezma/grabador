@@ -13,21 +13,18 @@ a {
 #corte { 
 	float:left;
 	width:150px;
+	height:100px;
 	text-align:center;
-}
-#cortehora { 
-	width:150px;
-}
-#cortetitulo { 
-	width:150px;
-	float:left;
-	text-align:center;
+	background:#F7F7F7;
+	margin-right:5px;
 }
 #proximo {
         color:#676767;
-        font-family: 'Nunito', sans-serif;
+        font-family: sans-serif;
         font-weight: 400;
-        font-size:3em;
+        font-size:3.5em;
+	display:inline-block;
+	margin-top:5px;
 }
 
 
@@ -76,16 +73,32 @@ a {
 	display:table;
 }
 #titulo { 
-	width:595px;
+	width:535px;
 	height:100px;
 	float:left;
 	margin-right:5px;
 }
 #tiempo { 
-	width:250px;
+	width:310px;
+	height:100px;
 	float:left;
+}
+#horaoficial { 
+	width:150px;
+	float:left;
+	text-align:center;
+	background:#F7F7F7;
+	height:47.5px;
+	margin-bottom:5px;
+}  
+#radioonline { 
+        width:150px;
+        float:left;
+        text-align:center;
+        background:#F7F7F7;
+        height:47.5px;
+	
 } 
-
 
 
 #anobar { 

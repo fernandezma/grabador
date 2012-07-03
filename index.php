@@ -14,6 +14,14 @@ $(function() {
     });
   }, 5 * 1000);
 });
+$(function() {
+  setInterval(function() {
+    $.get('/grabadorv3/HoraOficial.php', function(data) {
+      $('#hsficial').html(data);
+    });
+  }, 2 * 1000);
+});
+
 </script>
 </HEAD>
 <BODY>
@@ -94,10 +102,17 @@ if ( $mode1 == 'generated' && $generated == 'pass' )
                 </div>
 		<div id="tiempo">
 			<div id="corte">
-		                <div id="cortehora"><span id="proximo"></span></div>
-	        	        <div id="cortetitulo">PROXIMO CORTE</div>
+		                <span id="proximo">--:--</span></BR>
+				<span>PROXIMO CORTE </span>
 		        </div>
-
+			<div id="horaoficial">
+				<span>Hora Oficial</span></BR>
+				<span id="hsficial"> --:--:-- </span>
+			</div>
+			<div id="radioonline">
+				 <span>Escuchas:</span></BR>
+				<span id=> ---</span>
+			</div>
 		</div>
 	</div>
 	<div id="anobar">
