@@ -21,6 +21,13 @@ $(function() {
     });
   }, 2 * 1000);
 });
+$(function() {
+  setInterval(function() {
+    $.get('/grabadorv3/RadioOnline.php', function(data) {
+      $('#escuchas').html(data);
+    });
+  }, 10 * 1000);
+});
 
 </script>
 </HEAD>
@@ -110,8 +117,8 @@ if ( $mode1 == 'generated' && $generated == 'pass' )
 				<span id="hsficial"> --:--:-- </span>
 			</div>
 			<div id="radioonline">
-				 <span>Escuchas:</span></BR>
-				<span id=> ---</span>
+				 <span>Escuchas</span></BR>
+				<span id="escuchas" >----</span>
 			</div>
 		</div>
 	</div>
