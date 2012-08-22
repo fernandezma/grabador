@@ -178,6 +178,7 @@ if ( $mode1 == 'generated' && $generated == 'pass' )
                 for ($i = 1; $i <= 72; $i++) {
                         $urlhorahora = str_pad((int) $i,2,"0",STR_PAD_LEFT);
                         $urlhora = "$base$anopro/$mespro/$diapro/$urlhorahora";
+			$diraudios= "$base/audios/$anopro-$mespro/$diapro/$anopro-$mespro-$diapro-$urlhorahora";
                         if ($horaac == $urlhorahora )
                         {
                                 $horaclass= 'class="actual"';
@@ -187,7 +188,20 @@ if ( $mode1 == 'generated' && $generated == 'pass' )
                                 $horaclass= 'class=inactivo';
                         }
 
-                        echo "<li $horaclass ><a href=$urlhora>$urlhorahora Hs.</a></li>";
+			$dh  = opendir($diraudios);
+			while (false !== ($nombre_archivo = readdir($dh))) {
+			   $archivos[] = $nombre_archivo;
+			   if( is_dir($nombre_archivo) )
+			    {
+	               $contdir++;
+	     		}
+		}
+
+			$total_archivos = count($archivos);
+			$total = $total_archivos-2;  
+
+
+                        echo "<li $horaclass ><a href=$urlhora>$urlhorahora Hs.</a> - $total_archivos </li>";
                 }
                 ?>
 
