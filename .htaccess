@@ -1,12 +1,12 @@
 RewriteEngine on 
 Options +FollowSymlinks
-RewriteBase /grabadorv3/ 
+RewriteBase /grabador/ 
 #Regla 1 FULL MP3
-Rewriterule ^rec/([0-9]+)/([0-9]+)/([0-9]+)/([0-9]+)$ index.php?regla=1&ano=$1&mes=$2&dia=$3&hora=$4
+Rewriterule ^([0-9]+)/([0-9]+)/([0-9]+)/([0-9]+)$ index.php?regla=1&ano=$1&mes=$2&dia=$3&hora=$4
 #Regla 2 Dia
-Rewriterule ^rec/([0-9]+)/([0-9]+)/([0-9]+)$ index.php?regla=2&ano=$1&mes=$2&dia=$3
+Rewriterule ^([0-9]+)/([0-9]+)/([0-9]+)$ index.php?regla=2&ano=$1&mes=$2&dia=$3
 #Regla 3 Mes
-Rewriterule ^rec/([0-9]+)/([0-9]+)$ index.php?regla=3&ano=$1&mes=$2&dia=$3
+Rewriterule ^([0-9]+)/([0-9]+)$ index.php?regla=3&ano=$1&mes=$2&dia=$3
 #Regla Denegado
-Rewriterule ^rec/(.*)$ index.php?regla=4
+#Rewriterule ^/(.*)$ index.php?regla=4
 

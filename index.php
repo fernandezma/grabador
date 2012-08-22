@@ -2,28 +2,28 @@
 <HTML>
 <HEAD>
 <TITLE><?php echo $titulo ?></TITLE>
-<link rel="stylesheet" type="text/css" href="/grabadorv3/style.css" media="screen" />
+<link rel="stylesheet" type="text/css" href="/grabador/style.css" media="screen" />
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
 <link href='http://fonts.googleapis.com/css?family=Quicksand' rel='stylesheet' type='text/css'>
 <link href='http://fonts.googleapis.com/css?family=Concert+One' rel='stylesheet' type='text/css'>
 <script type="text/javascript">
 $(function() {
   setInterval(function() {
-    $.get('/grabadorv3/ProximoCorte.php', function(data) {
+    $.get('/grabador/ProximoCorte.php', function(data) {
       $('#proximo').html(data);
     });
   }, 5 * 1000);
 });
 $(function() {
   setInterval(function() {
-    $.get('/grabadorv3/HoraOficial.php', function(data) {
+    $.get('/grabador/HoraOficial.php', function(data) {
       $('#hsficial').html(data);
     });
   }, 2 * 1000);
 });
 $(function() {
   setInterval(function() {
-    $.get('/grabadorv3/RadioOnline.php', function(data) {
+    $.get('/grabador//RadioOnline.php', function(data) {
       $('#escuchas').html(data);
     });
   }, 10 * 1000);
@@ -39,7 +39,7 @@ $regla = $_GET["regla"];
 
 // Configuracion General
 #Default $base = "/"
-$base = "/grabadorv3/rec/"; 
+$base = "/grabador/"; 
 $titulo = "Grabador" ;
 
 // Checkeos de Entradas:
