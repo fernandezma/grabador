@@ -1,29 +1,30 @@
 <?php $segundosac = date('i'); ?>
+<?php require ('classAudioFile.php');  ?>
 <HTML>
 <HEAD>
 <TITLE><?php echo $titulo ?></TITLE>
-<link rel="stylesheet" type="text/css" href="/grabador/style.css" media="screen" />
+<link rel="stylesheet" type="text/css" href="/style.css" media="screen" />
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
 <link href='http://fonts.googleapis.com/css?family=Quicksand' rel='stylesheet' type='text/css'>
 <link href='http://fonts.googleapis.com/css?family=Concert+One' rel='stylesheet' type='text/css'>
 <script type="text/javascript">
 $(function() {
   setInterval(function() {
-    $.get('/grabador/ProximoCorte.php', function(data) {
+    $.get('/ProximoCorte.php', function(data) {
       $('#proximo').html(data);
     });
   }, 5 * 1000);
 });
 $(function() {
   setInterval(function() {
-    $.get('/grabador/HoraOficial.php', function(data) {
+    $.get('/HoraOficial.php', function(data) {
       $('#hsficial').html(data);
     });
   }, 2 * 1000);
 });
 $(function() {
   setInterval(function() {
-    $.get('/grabador//RadioOnline.php', function(data) {
+    $.get('/RadioOnline.php', function(data) {
       $('#escuchas').html(data);
     });
   }, 10 * 1000);
@@ -33,13 +34,12 @@ $(function() {
 </HEAD>
 <BODY>
 <?php
-
 // Entradas de datos
 $regla = $_GET["regla"];
 
 // Configuracion General
 #Default $base = "/"
-$base = "/grabador/"; 
+$base = "/"; 
 $titulo = "Grabador" ;
 
 // Checkeos de Entradas:
@@ -175,10 +175,11 @@ if ( $mode1 == 'generated' && $generated == 'pass' )
 	</div>
 	<div id="hora">
                 <?php
-                for ($i = 1; $i <= 72; $i++) {
+                for ($i = 1; $i <= 24; $i++) {
                         $urlhorahora = str_pad((int) $i,2,"0",STR_PAD_LEFT);
                         $urlhora = "$base$anopro/$mespro/$diapro/$urlhorahora";
-			$diraudios= "$base/audios/$anopro-$mespro/$diapro/$anopro-$mespro-$diapro-$urlhorahora";
+			$diraudios= "/var/www/audios/$anopro-$mespro/$diapro";
+			$filename= "$anopro-$mespro-$diapro-$urlhorahora";
                         if ($horaac == $urlhorahora )
                         {
                                 $horaclass= 'class="actual"';
@@ -187,21 +188,35 @@ if ( $mode1 == 'generated' && $generated == 'pass' )
                         } else {
                                 $horaclass= 'class=inactivo';
                         }
+			echo "<li $horaclass ><a href=$urlhora>$urlhorahora Hs.</a><div id=exentos style=\"width:600px\"><ul>";
 
-			$dh  = opendir($diraudios);
-			while (false !== ($nombre_archivo = readdir($dh))) {
-			   $archivos[] = $nombre_archivo;
-			   if( is_dir($nombre_archivo) )
-			    {
-	               $contdir++;
-	     		}
-		}
-
-			$total_archivos = count($archivos);
-			$total = $total_archivos-2;  
-
-
-                        echo "<li $horaclass ><a href=$urlhora>$urlhorahora Hs.</a> - $total_archivos </li>";
+				$output = explode("\n", `/usr/bin/sudo /usr/local/bin/filestatus $diraudios $filename`); 
+				foreach($output as $line) 
+				{ 
+					if ($line == ''){
+					}else{
+					list($comienso, $archivo) =explode(',', $line);
+					if ($comienso > '01:00'){
+					echo "MAYOR";
+					$duracion = "60";
+					}else{
+						$duracion = `/usr/bin/sudo /usr/local/bin/fileinfo $diraudios/$archivo `;
+					}
+					list($hora, $minutos) =explode(':', $comienso);
+					$duracionfix= $duracion-($minutos+($hora*60));
+					echo "<li><div><div style=\"width:60;background-color:#919191;float:left;\"><div style=\"width:$minutos px;background-color:#919191;float:left;\">&nbsp;</div><div style=\"width:$duracionfix px;background-color:green;float:left;\">&nbsp;</div></div><div style=\"float:left;\"><a href=\"/audios/$anopro-$mespro/$diapro/$archivo\"> $archivo  </a> Inicio: $minutos grabado: $duracion </div></div> </li>";
+					}
+				}  
+//file = explode('/', $lsopen);	
+//				echo $file[1]."DUR:". $file[0];
+//				$timesss = shell_exec("/usr/bin/sudo /usr/local/bin/fileinfo $pathmp");
+//				list($hms, $milli) = explode('.', $timesss);
+//				list($hours, $minutes, $seconds) = explode(':', $hms);
+//				$total_seconds = "$minutes:$seconds";		
+//				echo "hoa";
+			//	echo "<li class=exentos >".$file."Duracion: ".$total_seconds.$iniciorec."</li>";
+				
+                        echo "</ul></div></li>";
                 }
                 ?>
 

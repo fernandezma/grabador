@@ -177,6 +177,25 @@ a {
 #fixli { 
 	margin-right:0px;
 }
+#exentos {
+	display:table;
+	width:600px;
+}
+
+#exentos ul {
+	float:right;
+	margin:0;
+	padding:0;
+	width:500px;
+}
+#exentos li {
+	list-style-type:none;
+	margin-bottom:5px;
+	clear:both;
+	width:100%;
+
+}
+
 
 #hora { 
 	clear:both;
@@ -185,7 +204,6 @@ a {
 }
 #hora li {
 	list-style-type:none;
-	width:70px;
 	margin-bottom:5px;
 	text-align;center;
 	
