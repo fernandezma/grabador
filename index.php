@@ -186,7 +186,7 @@ if ( $mode1 == 'generated' && $generated == 'pass' )
                 <?php
 		$diraudios= "/var/www/audios/$anopro-$mespro/$diapro";
 
-                for ($i = 1; $i <= 24; $i++) {
+                for ($i = 0; $i <= 23; $i++) {
                         $urlhorahora = str_pad((int) $i,2,"0",STR_PAD_LEFT);
 			$filename= "$anopro-$mespro-$diapro-$urlhorahora";
 			$urlhora = "$base$anopro/$mespro/$diapro/$urlhorahora";
