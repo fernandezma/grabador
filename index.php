@@ -1,12 +1,67 @@
-<?php $segundosac = date('i'); ?>
-<?php require ('classAudioFile.php');  ?>
+<?php 
+
+$regla = $_GET["regla"];
+
+// Configuracion 
+// Default $base = "/"
+$base = "/";
+$titulo = "Grabador" ;
+
+// No editar bajo esta linea----
+
+//Datos Actuales
+$anoac = date('Y');
+$mesac = date ('m');
+$diaac = date ('j');
+$horaac = date('H');
+$minutosac = date('i');
+$segundosac = date('s');
+// $segundosac = date('i');  // ? que paso con esto?
+
+// Chequeos
+// Anio
+if (empty($_GET["ano"]))
+{
+	// si esta vacio pongo anio actual
+        $anopro = date('Y');
+}else {
+	$anopro = $_GET['ano'];
+}
+
+// Mes
+if (empty($_GET["mes"]))
+{
+	// si esta vacio pongo mes actual
+        $mespro = date('m');
+}else {
+	$mespro = $_GET['mes'];
+}
+
+// Dia
+if (empty($_GET["dia"]))
+{
+	// si esta vacio pongo dia actual
+        $diapro = date('j');
+}else {
+	$diapro = $_GET["dia"];
+}
+
+# Hora
+if (empty($_GET["hora"]))
+{
+	// si esta vacio pongo hora actual
+        $horapro = date('H');
+} else {
+	$horapro = $_GET["hora"];
+}
+?>
 <HTML>
 <HEAD>
 <TITLE><?php echo $titulo ?></TITLE>
 <link rel="stylesheet" type="text/css" href="/style.css" media="screen" />
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
-<link href='http://fonts.googleapis.com/css?family=Quicksand' rel='stylesheet' type='text/css'>
-<link href='http://fonts.googleapis.com/css?family=Concert+One' rel='stylesheet' type='text/css'>
+<script type="text/javascript" src="/jquery.min.js"></script>
+<link href='/Quicksand' rel='stylesheet' type='text/css'>
+<link href='/Concert' rel='stylesheet' type='text/css'>
 <script type="text/javascript">
 $(function() {
   setInterval(function() {
@@ -34,52 +89,6 @@ $(function() {
 </HEAD>
 <BODY>
 <?php
-// Entradas de datos
-$regla = $_GET["regla"];
-
-// Configuracion General
-#Default $base = "/"
-$base = "/"; 
-$titulo = "Grabador" ;
-
-// Checkeos de Entradas:
-if (empty($_GET["ano"]))
-{
-	echo "por aca " ;
-	$anopro = date('Y');
-}else {
-$anopro = $_GET['ano'];
-}
-
-if (empty($_GET["mes"]))
-{ 
-	$mespro = date('m');
-}else {
-$mespro = $_GET['mes'];
-}
-
-if (empty($_GET["dia"]))
-{
-	$diapro = date('j');
-}else {
-$diapro = $_GET["dia"];
-}
-
-if (empty($_GET["hora"]))
-{
-	$horapro = date('H');
-} else { 
-$horapro = $_GET["hora"];
-}
-
-//Datos Actuales
-$anoac = date('Y');
-$mesac = date ('m');
-$diaac = date ('j');
-$horaac = date('H');
-$minutosac = date('i');
-$segundosac = date('s');
-
 switch ($regla) { 
 	case 1:
 		$titulo = "Descarga" ;
@@ -175,11 +184,12 @@ if ( $mode1 == 'generated' && $generated == 'pass' )
 	</div>
 	<div id="hora">
                 <?php
+		$diraudios= "/var/www/audios/$anopro-$mespro/$diapro";
+
                 for ($i = 1; $i <= 24; $i++) {
                         $urlhorahora = str_pad((int) $i,2,"0",STR_PAD_LEFT);
-                        $urlhora = "$base$anopro/$mespro/$diapro/$urlhorahora";
-			$diraudios= "/var/www/audios/$anopro-$mespro/$diapro";
 			$filename= "$anopro-$mespro-$diapro-$urlhorahora";
+			$urlhora = "$base$anopro/$mespro/$diapro/$urlhorahora";
                         if ($horaac == $urlhorahora )
                         {
                                 $horaclass= 'class="actual"';
